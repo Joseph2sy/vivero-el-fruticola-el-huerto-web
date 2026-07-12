@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.tailwindcss.com"></script>a
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 <script>
   tailwind.config = {
@@ -16,7 +16,7 @@
       extend: {
         colors: {
           forest: '#064e3b',
-          leaf: '#0d6b4f',
+          leaf: '#0f766e',
           cream: '#f0fdf4',
           bark: '#2a2420',
           soil: '#57534e',
@@ -534,6 +534,134 @@
     initGallerySwiper();
   });
 })();
+</script>
+<script>
+/* Mejoras solicitadas: se añaden sin sustituir el catálogo, filtros, Swiper, menú ni pedidos por WhatsApp. */
+document.addEventListener('DOMContentLoaded', function () {
+  const addStyle = document.createElement('style');
+  addStyle.textContent = `
+    .product-highlight{background:#99f6e4;color:#064e3b}.counter{font-variant-numeric:tabular-nums}
+    .customer-toast{animation:customer-toast .4s ease-out both}@keyframes customer-toast{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+    .rating-star input{position:absolute;opacity:0}.rating-star span{cursor:pointer}.rating-star input:checked+span{color:#99f6e4}
+  `;
+  document.head.appendChild(addStyle);
+
+  /* Ubicación unificada. */
+  const location = 'Quimiag, Riobamba, Chimborazo, Ecuador';
+  const heroPlace = document.querySelector('#inicio p.uppercase');
+  if (heroPlace) heroPlace.textContent = location;
+  const contactPlace = document.querySelector('#contacto .space-y-6 > div:first-child p:last-child');
+  if (contactPlace) contactPlace.textContent = location;
+  document.querySelectorAll('footer li, footer p').forEach(function (node) {
+    if (node.textContent.includes('Riobamba, Chimborazo, Ecuador')) node.textContent = node.textContent.replace('Riobamba, Chimborazo, Ecuador', location);
+  });
+
+  /* Badge del hero, estadística y servicio de envíos nacionales. */
+  const heroCopy = document.querySelector('#inicio .max-w-7xl > p:not(.uppercase)');
+  if (heroCopy) heroCopy.insertAdjacentHTML('afterend', '<p class="inline-flex items-center gap-2 mt-5 rounded-full border border-[#99f6e4]/70 bg-[#064e3b]/40 px-4 py-2 text-xs font-semibold text-cream"><span class="text-[#99f6e4]">✦</span> Realizamos envíos seguros a nivel nacional dentro del Ecuador.</p>');
+  const shippingStat = document.querySelector('section.bg-forest > div > div:last-child');
+  if (shippingStat) shippingStat.innerHTML = '<span class="text-3xl leading-none">🚚</span><p class="font-display text-lg md:text-xl mt-2">Envíos nacionales</p><p class="text-[11px] md:text-xs text-forest/70 mt-1">Realizamos envíos seguros a nivel nacional dentro del Ecuador.</p>';
+  const serviceGrid = document.querySelector('#servicios .grid');
+  if (serviceGrid) {
+    serviceGrid.classList.remove('lg:grid-cols-4'); serviceGrid.classList.add('lg:grid-cols-5');
+    serviceGrid.insertAdjacentHTML('afterbegin', '<article class="bg-white rounded-xl2 p-8 hover-lift"><span class="text-3xl">🌤️</span><h3 class="font-display text-xl mt-5 text-bark">Asesoría técnica agrícola</h3><p class="text-soil text-sm mt-3 leading-relaxed">Ayudamos a elegir la planta ideal según el tipo de clima, temperatura, suelo y espacio disponible, incluyendo zonas cálidas, templadas y frías.</p></article>');
+    serviceGrid.insertAdjacentHTML('beforeend', '<article class="bg-white rounded-xl2 p-8 hover-lift"><span class="text-3xl">🚚</span><h3 class="font-display text-xl mt-5 text-bark">Envíos nacionales</h3><p class="text-soil text-sm mt-3 leading-relaxed">Realizamos envíos seguros a nivel nacional dentro del Ecuador.</p></article>');
+  }
+  const contactList = document.querySelector('#contacto .space-y-6');
+  if (contactList) contactList.insertAdjacentHTML('beforeend', '<div class="flex gap-4 items-start"><span class="w-12 h-12 rounded-full bg-forest/10 flex items-center justify-center text-xl flex-shrink-0">🚚</span><div><p class="font-semibold text-bark">Envíos a nivel nacional</p><p class="text-soil text-sm mt-1">Realizamos envíos seguros a nivel nacional dentro del Ecuador.</p></div></div>');
+
+  /* Fotos únicas y correctas de Unsplash, servidas a 1200 px. */
+  const correctImages = {
+    1:'https://images.unsplash.com/photo-1590502593747-42a996133562?auto=format&fit=crop&w=1200&q=80',
+    2:'https://images.unsplash.com/photo-1649859007815-139bdbf98218?auto=format&fit=crop&w=1200&q=80',
+    5:'https://images.unsplash.com/photo-1629271471402-2b94d6b60fac?auto=format&fit=crop&w=1200&q=80',
+    7:'https://images.unsplash.com/photo-1524274617086-8b6cb8c4ffee?auto=format&fit=crop&w=1200&q=80',
+    9:'https://images.unsplash.com/photo-1528696204443-76584adc2121?auto=format&fit=crop&w=1200&q=80',
+    10:'https://images.unsplash.com/photo-1597848212624-a19eb35e2651?auto=format&fit=crop&w=1200&q=80',
+    14:'https://images.unsplash.com/photo-1550207477-85f418dc3448?auto=format&fit=crop&w=1200&q=80',
+    15:'https://images.unsplash.com/photo-1615362206041-9f27825cd11e?auto=format&fit=crop&w=1200&q=80',
+    17:'https://images.unsplash.com/photo-1599685315640-9199b88f49e4?auto=format&fit=crop&w=1200&q=80',
+    18:'https://images.unsplash.com/photo-1589129144017-66ac299aa1b1?auto=format&fit=crop&w=1200&q=80'
+  };
+  const highlights = {1:'Más vendido', 5:'Nuevo', 14:'Más vendido'};
+  document.querySelectorAll('#productGrid > article').forEach(function(card, index) {
+    const id = index + 1, image = card.querySelector('img');
+    if (correctImages[id] && image) image.src = correctImages[id];
+    if (highlights[id]) { const holder = image && image.parentElement; if (holder) { holder.classList.add('relative'); holder.insertAdjacentHTML('beforeend', '<span class="product-highlight absolute top-4 left-4 rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-wide">' + highlights[id] + '</span>'); } }
+  });
+
+  /* Contadores animados al cargar. */
+  document.querySelectorAll('section.bg-forest .font-display.text-4xl').forEach(function (node) {
+    const raw = node.textContent.trim(), target = Number(raw.replace(/[^0-9]/g, ''));
+    if (!target) return;
+    const suffix = raw.includes('%') ? '%' : raw.includes('+') ? '+' : '';
+    const start = performance.now(), duration = 1100;
+    function tick(now) { const p = Math.min((now - start) / duration, 1); node.textContent = Math.floor(target * (1 - Math.pow(1 - p, 3))).toLocaleString('es-EC') + suffix; if (p < 1) requestAnimationFrame(tick); }
+    requestAnimationFrame(tick);
+  });
+
+  /* Testimonios persistentes. */
+  const testSection = document.querySelector('#testimonios .max-w-7xl');
+  const testList = document.querySelector('#testimonios .grid');
+  if (testSection && testList) {
+    testSection.insertAdjacentHTML('beforeend', '<div class="mt-16 border-t border-cream/20 pt-12 grid grid-cols-1 lg:grid-cols-5 gap-8"><div class="lg:col-span-2"><p class="uppercase tracking-[.25em] text-[#99f6e4] text-xs font-semibold">Tu opinión importa</p><h3 class="font-display text-3xl mt-3">Comparte tu experiencia</h3><p class="text-cream/75 text-sm mt-4 leading-relaxed">Tu testimonio se publicará de inmediato y se guardará en este dispositivo.</p></div><form id="testimonialForm" class="lg:col-span-3 bg-cream/10 rounded-xl2 p-6 md:p-8 space-y-5"><div class="grid sm:grid-cols-2 gap-5"><label class="text-sm font-semibold">Nombre<input id="testimonialName" required maxlength="60" class="mt-2 w-full rounded-xl border border-cream/30 bg-white/10 px-4 py-3 text-cream placeholder:text-cream/50 outline-none focus:border-[#99f6e4]" placeholder="Tu nombre"></label><label class="text-sm font-semibold">Ciudad<input id="testimonialCity" required maxlength="60" class="mt-2 w-full rounded-xl border border-cream/30 bg-white/10 px-4 py-3 text-cream placeholder:text-cream/50 outline-none focus:border-[#99f6e4]" placeholder="Tu ciudad"></label></div><fieldset><legend class="text-sm font-semibold mb-2">Calificación</legend><div class="flex gap-3 text-2xl">' + [1,2,3,4,5].map(function(n){return '<label class="rating-star"><input type="radio" name="rating" value="'+n+'" required><span>★</span></label>';}).join('') + '</div></fieldset><label class="text-sm font-semibold block">Comentario<textarea id="testimonialComment" required maxlength="400" rows="4" class="mt-2 w-full resize-y rounded-xl border border-cream/30 bg-white/10 px-4 py-3 text-cream placeholder:text-cream/50 outline-none focus:border-[#99f6e4]" placeholder="Cuéntanos cómo fue tu experiencia"></textarea></label><button class="bg-[#99f6e4] text-forest px-6 py-3 rounded-full text-sm font-bold hover-lift" type="submit">Enviar testimonio</button><p id="testimonialConfirmation" class="hidden text-sm text-[#99f6e4]" role="status"></p></form></div>');
+    const esc = function(v){ return String(v).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); };
+    const makeCard = function(t){ return '<article class="bg-cream/10 backdrop-blur rounded-xl2 p-8 hover-lift customer-toast"><p class="stars text-[#99f6e4] text-lg">' + '★'.repeat(t.rating) + '☆'.repeat(5-t.rating) + '</p><p class="text-cream/90 text-sm mt-4 leading-relaxed">“' + esc(t.comment) + '”</p><p class="font-semibold text-sm mt-5">' + esc(t.name) + '</p><p class="text-cream/60 text-xs">' + esc(t.city) + '</p></article>'; };
+    const key = 'elHuertoTestimonials'; let saved = []; try { saved = JSON.parse(localStorage.getItem(key) || '[]'); } catch(e) {}
+    saved.forEach(function(t){ testList.insertAdjacentHTML('beforeend', makeCard(t)); });
+    document.querySelector('#testimonialForm').addEventListener('submit', function(event){ event.preventDefault(); const form = event.currentTarget, t = {name:form.querySelector('#testimonialName').value.trim(), city:form.querySelector('#testimonialCity').value.trim(), comment:form.querySelector('#testimonialComment').value.trim(), rating:Number(new FormData(form).get('rating'))}; if(!t.name || !t.city || !t.comment || !t.rating) return; saved.push(t); localStorage.setItem(key, JSON.stringify(saved)); testList.insertAdjacentHTML('beforeend', makeCard(t)); form.reset(); const c = document.querySelector('#testimonialConfirmation'); c.textContent = '¡Gracias! Tu testimonio fue publicado y guardado correctamente.'; c.classList.remove('hidden'); setTimeout(function(){c.classList.add('hidden');}, 5000); });
+  }
+
+  /* Mensaje flotante de WhatsApp tras 5 segundos. */
+  const prompt = document.createElement('aside');
+  prompt.className = 'hidden fixed z-50 bottom-24 right-5 max-w-[290px] rounded-2xl bg-white p-4 text-sm text-bark shadow-2xl border border-[#99f6e4]';
+  prompt.innerHTML = '<button class="absolute -top-2 -right-2 w-7 h-7 rounded-full bg-forest text-cream" aria-label="Cerrar mensaje">×</button><p class="font-medium">¡Hola! 👋 ¿Necesitas ayuda para elegir una planta? Escríbenos por WhatsApp.</p><a class="inline-flex mt-3 text-xs font-bold text-forest" href="https://wa.me/593992822056" target="_blank" rel="noopener">Abrir WhatsApp →</a>';
+  document.body.appendChild(prompt); prompt.querySelector('button').addEventListener('click', function(){prompt.remove();}); setTimeout(function(){prompt.classList.remove('hidden');prompt.classList.add('customer-toast');}, 5000);
+});
+</script>
+<script>
+/* Catálogo exclusivamente de plantas: sustituye los cuatro artículos de jardinería. */
+document.addEventListener('DOMContentLoaded', function () {
+  const grid = document.getElementById('productGrid');
+  if (!grid) return;
+  const plantImages = [
+    'https://images.unsplash.com/photo-1590502593747-42a996133562?auto=format&fit=crop&w=1200&q=80',
+    'https://images.unsplash.com/photo-1649859007815-139bdbf98218?auto=format&fit=crop&w=1200&q=80',
+    'https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?auto=format&fit=crop&w=1200&q=80',
+    'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=1200&q=80',
+    'https://images.unsplash.com/photo-1629271471402-2b94d6b60fac?auto=format&fit=crop&w=1200&q=80',
+    'https://images.unsplash.com/photo-1622673172341-0d5eaa4b3f0d?auto=format&fit=crop&w=1200&q=80',
+    'https://images.unsplash.com/photo-1524274617086-8b6cb8c4ffee?auto=format&fit=crop&w=1200&q=80',
+    'https://images.unsplash.com/photo-1597055181300-e3633a9f26a5?auto=format&fit=crop&w=1200&q=80',
+    'https://images.unsplash.com/photo-1528696204443-76584adc2121?auto=format&fit=crop&w=1200&q=80',
+    'https://images.unsplash.com/photo-1597848212624-a19eb35e2651?auto=format&fit=crop&w=1200&q=80',
+    'https://images.unsplash.com/photo-1520412099551-62b6bafeb5bb?auto=format&fit=crop&w=1200&q=80',
+    'https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=1200&q=80',
+    'https://images.unsplash.com/photo-1459156212016-c812468e2115?auto=format&fit=crop&w=1200&q=80',
+    'https://images.unsplash.com/photo-1550207477-85f418dc3448?auto=format&fit=crop&w=1200&q=80',
+    'https://images.unsplash.com/photo-1615362206041-9f27825cd11e?auto=format&fit=crop&w=1200&q=80',
+    'https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&w=1200&q=80'
+  ];
+  [...grid.children].slice(0, 16).forEach(function(card, index) {
+    const image = card.querySelector('img');
+    if (image) { image.src = plantImages[index]; image.onerror = function(){ this.src = 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=1200&q=80'; }; }
+  });
+  document.querySelector('[data-filter="herramientas"]')?.remove();
+  [...grid.children].slice(16).forEach(function(card){ card.remove(); });
+
+  const newPlants = [
+    { cat:'interior', category:'Plantas de Interior', name:'Orquídea Phalaenopsis', price:'$12.00', stock:'Disponible', img:'https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=1200&q=80' },
+    { cat:'interior', category:'Plantas de Interior', name:'Helecho Boston', price:'$8.00', stock:'Disponible', img:'https://images.unsplash.com/photo-1512428813834-c702c7702b78?auto=format&fit=crop&w=1200&q=80' },
+    { cat:'exterior', category:'Plantas de Exterior', name:'Lavanda Aromática', price:'$5.50', stock:'Disponible', img:'https://images.unsplash.com/photo-1499002238440-d264edd596ec?auto=format&fit=crop&w=1200&q=80' },
+    { cat:'interior', category:'Plantas de Interior', name:'Calathea Medallion', price:'$10.00', stock:'Pocas unidades', img:'https://images.unsplash.com/photo-1513545408654-397e2d9d7a80?auto=format&fit=crop&w=1200&q=80' }
+  ];
+  newPlants.forEach(function(plant) {
+    grid.insertAdjacentHTML('beforeend', '<article class="fade-item fade-show bg-white rounded-xl2 overflow-hidden hover-lift flex flex-col" data-cat="' + plant.cat + '"><div class="h-56 overflow-hidden"><img src="' + plant.img + '" alt="' + plant.name + '" class="w-full h-full object-cover" loading="lazy" onerror="this.src=\'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&amp;fit=crop&amp;w=1200&amp;q=80\'"></div><div class="p-6 flex flex-col flex-1"><span class="text-[11px] uppercase tracking-widest text-forest/70 font-semibold">' + plant.category + '</span><h3 class="font-display text-xl text-bark mt-2">' + plant.name + '</h3><div class="flex items-center justify-between mt-4"><span class="font-semibold text-forest text-lg">' + plant.price + '</span><span class="text-[11px] px-3 py-1 rounded-full font-semibold ' + (plant.stock === 'Disponible' ? 'bg-emerald-50 text-emerald-700' : 'bg-amber-50 text-amber-700') + '">' + plant.stock + '</span></div><button class="new-plant-order mt-6 inline-flex justify-center items-center gap-2 bg-forest text-cream text-sm font-semibold px-5 py-3 rounded-full hover-lift" data-name="' + plant.name + '">Pedir por WhatsApp</button></div></article>');
+  });
+  document.querySelectorAll('.new-plant-order').forEach(function(button) {
+    button.addEventListener('click', function(){ window.open('https://wa.me/593992822056?text=' + encodeURIComponent('Hola Vivero El Frutícola El Huerto, estoy interesado en adquirir: ' + button.dataset.name + '. ¿Me podrían dar más información?'), '_blank', 'noopener'); });
+  });
+});
 </script>
 </body>
 </html>
