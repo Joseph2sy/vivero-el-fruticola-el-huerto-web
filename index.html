@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vivero El Frutícola El Huerto | Plantas Frutales, Ornamentales y Más en Riobamba</title>
+<meta name="description" content="Vivero El Frutícola El Huerto en Riobamba, Ecuador. Plantas frutales, ornamentales, de interior, exterior, medicinales, suculentas, abonos y herramientas de jardinería. Pide por WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          forest: '#064e3b',
+          leaf: '#0d6b4f',
+          cream: '#f0fdf4',
+          bark: '#2a2420',
+          soil: '#57534e',
+        },
+        fontFamily: {
+          display: ['Fraunces', 'serif'],
+          body: ['"Plus Jakarta Sans"', 'sans-serif'],
+        },
+        borderRadius: {
+          xl2: '24px',
+        }
+      }
+    }
+  }
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Plus Jakarta Sans', sans-serif; color: #2a2420; background:#fffdfa; }
+  h1, h2, h3, .font-display { font-family: 'Fraunces', serif; }
+  ::selection { background: #064e3b; color: #f0fdf4; }
+  .hover-lift { transition: transform 300ms ease-out, box-shadow 300ms ease-out; }
+  .hover-lift:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 20px 40px -12px rgba(6,78,59,0.25); }
+  .fade-item { transition: opacity 300ms ease-out, transform 300ms ease-out; }
+  .fade-hide { opacity: 0; transform: scale(0.92); pointer-events: none; position: absolute; }
+  .fade-show { opacity: 1; transform: scale(1); }
+  .nav-link { position: relative; }
+  .nav-link::after {
+    content: ''; position: absolute; left: 0; bottom: -4px; width: 0%; height: 2px;
+    background: #064e3b; transition: width 300ms ease-out;
+  }
+  .nav-link.active::after, .nav-link:hover::after { width: 100%; }
+  .filter-btn { transition: all 300ms ease-out; }
+  .filter-btn.active { background: #064e3b; color: #f0fdf4; }
+  .leaf-divider { background-image: radial-gradient(circle, #064e3b 1.5px, transparent 1.5px); background-size: 14px 14px; }
+  .swiper-pagination-bullet { background: #064e3b !important; opacity: 0.3; }
+  .swiper-pagination-bullet-active { opacity: 1 !important; }
+  .swiper-button-next, .swiper-button-prev { color: #064e3b !important; }
+  @media (max-width: 640px) {
+    .swiper-button-next, .swiper-button-prev { display: none; }
+  }
+  .stars { letter-spacing: 2px; }
+  .grain-badge {
+    background: repeating-linear-gradient(135deg, rgba(6,78,59,0.06) 0 2px, transparent 2px 8px);
+  }
+</style>
+</head>
+<body class="antialiased">
+
+<a href="#catalogo" class="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:bg-forest focus:text-cream focus:px-4 focus:py-2 focus:rounded-full focus:top-2 focus:left-2">Ir al catálogo</a>
+
+<header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/70 backdrop-blur-lg border-b border-forest/5">
+  <nav class="max-w-7xl mx-auto px-5 md:px-8 flex items-center justify-between h-20" aria-label="Navegación principal">
+    <a href="#inicio" class="flex items-center gap-2 group" aria-label="Inicio Vivero El Frutícola El Huerto">
+      <span class="w-10 h-10 rounded-full bg-forest flex items-center justify-center text-cream text-lg font-display transition-transform duration-300 group-hover:scale-110">🌿</span>
+      <span class="font-display text-lg md:text-xl text-forest leading-tight">El Frutícola<br class="hidden md:block"><span class="text-xs md:text-sm font-body font-medium tracking-wide text-soil"> El Huerto</span></span>
+    </a>
+    <ul class="hidden lg:flex items-center gap-9 font-medium text-sm text-bark">
+      <li><a href="#inicio" class="nav-link active" data-section="inicio">Inicio</a></li>
+      <li><a href="#catalogo" class="nav-link" data-section="catalogo">Catálogo</a></li>
+      <li><a href="#servicios" class="nav-link" data-section="servicios">Servicios</a></li>
+      <li><a href="#galeria" class="nav-link" data-section="galeria">Galería</a></li>
+      <li><a href="#testimonios" class="nav-link" data-section="testimonios">Testimonios</a></li>
+      <li><a href="#contacto" class="nav-link" data-section="contacto">Contacto</a></li>
+    </ul>
+    <a href="https://wa.me/593979169299?text=Hola%20Vivero%20El%20Fruti%CC%81cola%20El%20Huerto%2C%20me%20encuentro%20en%20Riobamba%20y%20quisiera%20mas%20informacion%20sobre%20sus%20plantas" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp" class="hidden lg:inline-flex items-center gap-2 bg-forest text-cream text-sm font-semibold px-5 py-3 rounded-full hover-lift">
+      WhatsApp
+    </a>
+    <button id="menuBtn" aria-label="Abrir menú móvil" aria-expanded="false" class="lg:hidden w-11 h-11 rounded-full flex items-center justify-center bg-forest/5">
+      <svg id="iconOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-forest" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" /></svg>
+      <svg id="iconClose" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-forest hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+    </button>
+  </nav>
+  <div id="mobileMenu" class="lg:hidden hidden bg-white/95 backdrop-blur-lg border-t border-forest/10">
+    <ul class="flex flex-col px-6 py-6 gap-5 font-medium text-bark">
+      <li><a href="#inicio" class="mobile-link block py-1">Inicio</a></li>
+      <li><a href="#catalogo" class="mobile-link block py-1">Catálogo</a></li>
+      <li><a href="#servicios" class="mobile-link block py-1">Servicios</a></li>
+      <li><a href="#galeria" class="mobile-link block py-1">Galería</a></li>
+      <li><a href="#testimonios" class="mobile-link block py-1">Testimonios</a></li>
+      <li><a href="#contacto" class="mobile-link block py-1">Contacto</a></li>
+      <li>
+        <a href="https://wa.me/593979169299?text=Hola%20Vivero%20El%20Fruti%CC%81cola%20El%20Huerto%2C%20me%20encuentro%20en%20Riobamba%20y%20quisiera%20mas%20informacion%20sobre%20sus%20plantas" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp" class="inline-flex justify-center items-center gap-2 bg-forest text-cream text-sm font-semibold px-5 py-3 rounded-full w-full mt-2">
+          Escribir por WhatsApp
+        </a>
+      </li>
+    </ul>
+  </div>
+</header>
+
+<main>
+
+<section id="inicio" class="relative min-h-screen flex items-end md:items-center">
+  <div class="absolute inset-0 -z-10">
+    <img src="https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?auto=format&fit=crop&w=1920&q=80" alt="Vivero con plantas frutales y follaje verde" class="w-full h-full object-cover" loading="lazy">
+    <div class="absolute inset-0 bg-gradient-to-t from-forest/90 via-forest/50 to-forest/20"></div>
+  </div>
+  <div class="max-w-7xl mx-auto px-5 md:px-8 pb-20 pt-40 md:py-20 w-full">
+    <p class="uppercase tracking-[0.3em] text-cream/80 text-xs md:text-sm font-semibold mb-5">Riobamba · Chimborazo · Ecuador</p>
+    <h1 class="font-display text-cream text-5xl md:text-7xl lg:text-8xl leading-[0.95] max-w-4xl">
+      Cada planta<br>tiene su lugar<br><span class="italic font-light">en tu hogar.</span>
+    </h1>
+    <p class="text-cream/85 text-base md:text-lg max-w-xl mt-7 leading-relaxed">
+      Desde árboles frutales hasta suculentas de interior, cultivamos con dedicación cada especie que sale de nuestro vivero en Riobamba, lista para echar raíces contigo.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 mt-9">
+      <a href="#catalogo" class="inline-flex justify-center items-center bg-cream text-forest font-semibold px-7 py-4 rounded-full hover-lift" aria-label="Ver catálogo de plantas">Ver catálogo</a>
+      <a href="https://wa.me/593979169299?text=Hola%20Vivero%20El%20Fruti%CC%81cola%20El%20Huerto%2C%20me%20encuentro%20en%20Riobamba%20y%20quisiera%20mas%20informacion%20sobre%20sus%20plantas" target="_blank" rel="noopener" class="inline-flex justify-center items-center gap-2 border border-cream/50 text-cream font-semibold px-7 py-4 rounded-full hover-lift" aria-label="Contactar por WhatsApp">
+        Pedir por WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="bg-forest text-cream">
+  <div class="max-w-7xl mx-auto px-5 md:px-8 py-14 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+    <div>
+      <p class="font-display text-4xl md:text-5xl">15+</p>
+      <p class="text-xs md:text-sm text-cream/70 mt-2 tracking-wide">Años cultivando en Riobamba</p>
+    </div>
+    <div>
+      <p class="font-display text-4xl md:text-5xl">120+</p>
+      <p class="text-xs md:text-sm text-cream/70 mt-2 tracking-wide">Especies disponibles</p>
+    </div>
+    <div>
+      <p class="font-display text-4xl md:text-5xl">3,500+</p>
+      <p class="text-xs md:text-sm text-cream/70 mt-2 tracking-wide">Familias atendidas</p>
+    </div>
+    <div>
+      <p class="font-display text-4xl md:text-5xl">100%</p>
+      <p class="text-xs md:text-sm text-cream/70 mt-2 tracking-wide">Plantas de origen local</p>
+    </div>
+  </div>
+</section>
+
+<section id="catalogo" class="max-w-7xl mx-auto px-5 md:px-8 py-24 md:py-32">
+  <div class="max-w-2xl mb-12">
+    <p class="uppercase tracking-[0.3em] text-forest/70 text-xs md:text-sm font-semibold mb-4">Nuestro catálogo</p>
+    <h2 class="font-display text-4xl md:text-5xl text-bark leading-tight">Plantas para cada rincón de tu vida</h2>
+    <p class="text-soil mt-4 leading-relaxed">Explora frutales, ornamentales, especies de interior y exterior, además de todo lo necesario para su cuidado.</p>
+  </div>
+
+  <div class="flex flex-wrap gap-3 mb-12" role="group" aria-label="Filtros de categoría">
+    <button class="filter-btn active px-5 py-2.5 rounded-full border border-forest/20 text-sm font-semibold text-bark" data-filter="todas">Todas</button>
+    <button class="filter-btn px-5 py-2.5 rounded-full border border-forest/20 text-sm font-semibold text-bark" data-filter="frutales">Árboles Frutales</button>
+    <button class="filter-btn px-5 py-2.5 rounded-full border border-forest/20 text-sm font-semibold text-bark" data-filter="interior">Plantas de Interior</button>
+    <button class="filter-btn px-5 py-2.5 rounded-full border border-forest/20 text-sm font-semibold text-bark" data-filter="exterior">Plantas de Exterior</button>
+    <button class="filter-btn px-5 py-2.5 rounded-full border border-forest/20 text-sm font-semibold text-bark" data-filter="herramientas">Herramientas/Abonos</button>
+  </div>
+
+  <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
+  </div>
+</section>
+
+<section id="servicios" class="bg-cream">
+  <div class="max-w-7xl mx-auto px-5 md:px-8 py-24 md:py-32">
+    <div class="max-w-2xl mb-14">
+      <p class="uppercase tracking-[0.3em] text-forest/70 text-xs md:text-sm font-semibold mb-4">Servicios especializados</p>
+      <h2 class="font-display text-4xl md:text-5xl text-bark leading-tight">Más que un vivero, un aliado para tu jardín</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7">
+      <article class="bg-white rounded-xl2 p-8 hover-lift">
+        <span class="text-3xl">🌱</span>
+        <h3 class="font-display text-xl mt-5 text-bark">Asesoría de siembra</h3>
+        <p class="text-soil text-sm mt-3 leading-relaxed">Te orientamos sobre la especie ideal según tu suelo, clima y espacio disponible en Riobamba.</p>
+      </article>
+      <article class="bg-white rounded-xl2 p-8 hover-lift">
+        <span class="text-3xl">🚚</span>
+        <h3 class="font-display text-xl mt-5 text-bark">Entrega a domicilio</h3>
+        <p class="text-soil text-sm mt-3 leading-relaxed">Llevamos tus plantas hasta la puerta de tu casa, cuidando cada raíz durante el transporte.</p>
+      </article>
+      <article class="bg-white rounded-xl2 p-8 hover-lift">
+        <span class="text-3xl">✂️</span>
+        <h3 class="font-display text-xl mt-5 text-bark">Diseño de jardines</h3>
+        <p class="text-soil text-sm mt-3 leading-relaxed">Planificamos espacios verdes completos, desde huertos frutales hasta jardines ornamentales.</p>
+      </article>
+      <article class="bg-white rounded-xl2 p-8 hover-lift">
+        <span class="text-3xl">🪴</span>
+        <h3 class="font-display text-xl mt-5 text-bark">Mantenimiento</h3>
+        <p class="text-soil text-sm mt-3 leading-relaxed">Poda, fertilización y control fitosanitario para que tus plantas se mantengan saludables.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="galeria" class="max-w-7xl mx-auto px-5 md:px-8 py-24 md:py-32">
+  <div class="max-w-2xl mb-12">
+    <p class="uppercase tracking-[0.3em] text-forest/70 text-xs md:text-sm font-semibold mb-4">Galería</p>
+    <h2 class="font-display text-4xl md:text-5xl text-bark leading-tight">Un vistazo a nuestro vivero</h2>
+  </div>
+  <div class="swiper gallerySwiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=1200&q=80" alt="Fila de plantas en macetas en el vivero" class="w-full h-[420px] object-cover rounded-xl2" loading="lazy">
+      </div>
+      <div class="swiper-slide">
+        <img src="https://images.unsplash.com/photo-1466781783364-36c955e42a7f?auto=format&fit=crop&w=1200&q=80" alt="Invernadero con plantones jóvenes" class="w-full h-[420px] object-cover rounded-xl2" loading="lazy">
+      </div>
+      <div class="swiper-slide">
+        <img src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&w=1200&q=80" alt="Plantas suculentas y ornamentales" class="w-full h-[420px] object-cover rounded-xl2" loading="lazy">
+      </div>
+      <div class="swiper-slide">
+        <img src="https://images.unsplash.com/photo-1524598171353-e2af3a5d0f77?auto=format&fit=crop&w=1200&q=80" alt="Árboles frutales listos para siembra" class="w-full h-[420px] object-cover rounded-xl2" loading="lazy">
+      </div>
+      <div class="swiper-slide">
+        <img src="https://images.unsplash.com/photo-1591857177580-dc82b9ac4e1e?auto=format&fit=crop&w=1200&q=80" alt="Herramientas de jardinería y abonos" class="w-full h-[420px] object-cover rounded-xl2" loading="lazy">
+      </div>
+    </div>
+    <div class="swiper-pagination mt-6 relative"></div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>
+</section>
+
+<section id="testimonios" class="bg-forest text-cream">
+  <div class="max-w-7xl mx-auto px-5 md:px-8 py-24 md:py-32">
+    <div class="max-w-2xl mb-14">
+      <p class="uppercase tracking-[0.3em] text-cream/70 text-xs md:text-sm font-semibold mb-4">Testimonios</p>
+      <h2 class="font-display text-4xl md:text-5xl leading-tight">Lo que dicen nuestros clientes</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-7">
+      <article class="bg-cream/10 backdrop-blur rounded-xl2 p-8 hover-lift">
+        <p class="stars text-amber-300 text-lg" aria-label="5 de 5 estrellas">★★★★★</p>
+        <p class="text-cream/90 text-sm mt-4 leading-relaxed">"Compré un durazno y una guanábana, llegaron sanas y bien enraizadas. El asesoramiento fue clave para elegir bien."</p>
+        <p class="font-semibold text-sm mt-5">María Fernanda C.</p>
+        <p class="text-cream/60 text-xs">Riobamba, La Vicentina</p>
+      </article>
+      <article class="bg-cream/10 backdrop-blur rounded-xl2 p-8 hover-lift">
+        <p class="stars text-amber-300 text-lg" aria-label="5 de 5 estrellas">★★★★★</p>
+        <p class="text-cream/90 text-sm mt-4 leading-relaxed">"Excelente atención por WhatsApp, me ayudaron a diseñar todo el jardín de la entrada con plantas ornamentales."</p>
+        <p class="font-semibold text-sm mt-5">Jorge Andrade</p>
+        <p class="text-cream/60 text-xs">Riobamba, Centro</p>
+      </article>
+      <article class="bg-cream/10 backdrop-blur rounded-xl2 p-8 hover-lift">
+        <p class="stars text-amber-300 text-lg" aria-label="5 de 5 estrellas">★★★★★</p>
+        <p class="text-cream/90 text-sm mt-4 leading-relaxed">"Los abonos orgánicos que venden son de primera. Mis suculentas nunca habían lucido tan bien."</p>
+        <p class="font-semibold text-sm mt-5">Paola Sánchez</p>
+        <p class="text-cream/60 text-xs">Riobamba, Chimborazo</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="contacto" class="max-w-7xl mx-auto px-5 md:px-8 py-24 md:py-32">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 items-start">
+    <div>
+      <p class="uppercase tracking-[0.3em] text-forest/70 text-xs md:text-sm font-semibold mb-4">Contacto</p>
+      <h2 class="font-display text-4xl md:text-5xl text-bark leading-tight mb-8">Visítanos o escríbenos</h2>
+      <div class="space-y-6">
+        <div class="flex gap-4 items-start">
+          <span class="w-12 h-12 rounded-full bg-forest/10 flex items-center justify-center text-xl flex-shrink-0">📍</span>
+          <div>
+            <p class="font-semibold text-bark">Ubicación</p>
+            <p class="text-soil text-sm mt-1">Vía a Riobamba, sector El Huerto, Chimborazo, Ecuador</p>
+          </div>
+        </div>
+        <div class="flex gap-4 items-start">
+          <span class="w-12 h-12 rounded-full bg-forest/10 flex items-center justify-center text-xl flex-shrink-0">🕓</span>
+          <div>
+            <p class="font-semibold text-bark">Horarios</p>
+            <p class="text-soil text-sm mt-1">Lunes a sábado: 8:00 am – 6:00 pm</p>
+            <p class="text-soil text-sm">Domingo: 9:00 am – 1:00 pm</p>
+          </div>
+        </div>
+        <div class="flex gap-4 items-start">
+          <span class="w-12 h-12 rounded-full bg-forest/10 flex items-center justify-center text-xl flex-shrink-0">💬</span>
+          <div>
+            <p class="font-semibold text-bark">WhatsApp</p>
+            <p class="text-soil text-sm mt-1">+593 97 916 9299</p>
+          </div>
+        </div>
+      </div>
+      <a href="https://wa.me/593979169299?text=Hola%20Vivero%20El%20Fruti%CC%81cola%20El%20Huerto%2C%20me%20encuentro%20en%20Riobamba%20y%20quisiera%20mas%20informacion%20sobre%20sus%20plantas" target="_blank" rel="noopener" aria-label="Escribir al vivero por WhatsApp" class="inline-flex items-center gap-2 bg-forest text-cream font-semibold px-7 py-4 rounded-full hover-lift mt-9">
+        Escribir por WhatsApp
+      </a>
+    </div>
+    <div class="rounded-xl2 overflow-hidden shadow-lg h-[420px] lg:h-full min-h-[420px]">
+      <iframe title="Ubicación del Vivero El Frutícola El Huerto en Riobamba" src="https://www.google.com/maps?q=Riobamba,Ecuador&output=embed" class="w-full h-full border-0" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="bg-bark text-cream/80">
+  <div class="max-w-7xl mx-auto px-5 md:px-8 py-16 grid grid-cols-1 md:grid-cols-4 gap-10">
+    <div>
+      <div class="flex items-center gap-2 mb-4">
+        <span class="w-9 h-9 rounded-full bg-cream/10 flex items-center justify-center text-base">🌿</span>
+        <span class="font-display text-cream text-lg">El Frutícola El Huerto</span>
+      </div>
+      <p class="text-sm leading-relaxed">Vivero especializado en plantas frutales y ornamentales en Riobamba, Chimborazo, Ecuador.</p>
+    </div>
+    <div>
+      <p class="font-semibold text-cream mb-4 text-sm">Explora</p>
+      <ul class="space-y-2 text-sm">
+        <li><a href="#catalogo" class="hover:text-cream transition-colors duration-300">Catálogo</a></li>
+        <li><a href="#servicios" class="hover:text-cream transition-colors duration-300">Servicios</a></li>
+        <li><a href="#galeria" class="hover:text-cream transition-colors duration-300">Galería</a></li>
+        <li><a href="#testimonios" class="hover:text-cream transition-colors duration-300">Testimonios</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="font-semibold text-cream mb-4 text-sm">Categorías</p>
+      <ul class="space-y-2 text-sm">
+        <li>Árboles Frutales</li>
+        <li>Plantas de Interior</li>
+        <li>Plantas de Exterior</li>
+        <li>Herramientas y Abonos</li>
+      </ul>
+    </div>
+    <div>
+      <p class="font-semibold text-cream mb-4 text-sm">Contacto</p>
+      <ul class="space-y-2 text-sm">
+        <li>Riobamba, Chimborazo, Ecuador</li>
+        <li>+593 97 916 9299</li>
+        <li>Lun–Sáb 8:00–18:00</li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-cream/10">
+    <p class="max-w-7xl mx-auto px-5 md:px-8 py-6 text-xs text-cream/50">© 2026 Vivero El Frutícola El Huerto. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<a href="https://wa.me/593979169299?text=Hola%20Vivero%20El%20Fruti%CC%81cola%20El%20Huerto%2C%20me%20encuentro%20en%20Riobamba%20y%20quisiera%20mas%20informacion%20sobre%20sus%20plantas" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp" class="lg:hidden fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full bg-forest text-cream flex items-center justify-center shadow-xl hover-lift">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-7 h-7"><path d="M12.04 2c-5.46 0-9.9 4.44-9.9 9.9 0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.44 9.9-9.9 0-2.64-1.03-5.13-2.9-6.99A9.82 9.82 0 0 0 12.04 2zm5.79 14.06c-.24.68-1.4 1.3-1.93 1.38-.5.08-1.12.11-1.81-.11-.42-.13-.95-.31-1.64-.6-2.88-1.24-4.76-4.13-4.9-4.33-.14-.19-1.17-1.56-1.17-2.97 0-1.41.74-2.1 1-2.39.26-.28.57-.36.76-.36.19 0 .38 0 .55.01.18.01.41-.07.64.49.24.58.81 2 .88 2.15.07.14.11.31.02.5-.09.19-.14.31-.28.47-.14.16-.29.36-.42.48-.14.14-.28.29-.12.57.16.28.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.22 1.37.28.14.44.12.6-.07.16-.19.68-.79.87-1.06.19-.28.37-.23.62-.14.26.09 1.63.77 1.91.91.28.14.47.21.54.33.07.12.07.68-.17 1.36z"/></svg>
+</a>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+(function() {
+  const WHATSAPP_BASE = "https://wa.me/593979169299?text=";
+
+  const products = [
+    { id: 1, cat: "frutales", name: "Mango Injerto", price: "$8.50", stock: "Disponible", img: "https://images.unsplash.com/photo-1591073113125-e46713c829ed?auto=format&fit=crop&w=600&q=80" },
+    { id: 2, cat: "frutales", name: "Aguacate Hass", price: "$12.00", stock: "Disponible", img: "https://images.unsplash.com/photo-1601039641847-7857b994d704?auto=format&fit=crop&w=600&q=80" },
+    { id: 3, cat: "frutales", name: "Guayaba Nacional", price: "$7.00", stock: "Pocas unidades", img: "https://images.unsplash.com/photo-1536511132770-e5058c7e8c46?auto=format&fit=crop&w=600&q=80" },
+    { id: 4, cat: "frutales", name: "Naranja Valencia", price: "$9.50", stock: "Disponible", img: "https://images.unsplash.com/photo-1611080626919-7cf5a9dbab5b?auto=format&fit=crop&w=600&q=80" },
+    { id: 5, cat: "interior", name: "Potos Dorado", price: "$5.00", stock: "Disponible", img: "https://images.unsplash.com/photo-1622673172341-0d5eaa4b3f0d?auto=format&fit=crop&w=600&q=80" },
+    { id: 6, cat: "interior", name: "Sansevieria (Lengua de Suegra)", price: "$6.50", stock: "Disponible", img: "https://images.unsplash.com/photo-1620127252536-03bcfe15cf51?auto=format&fit=crop&w=600&q=80" },
+    { id: 7, cat: "interior", name: "Ficus Lyrata", price: "$18.00", stock: "Pocas unidades", img: "https://images.unsplash.com/photo-1597055181300-e3633a9f26a5?auto=format&fit=crop&w=600&q=80" },
+    { id: 8, cat: "interior", name: "Suculenta Echeveria", price: "$3.50", stock: "Disponible", img: "https://images.unsplash.com/photo-1459156212016-c812468e2115?auto=format&fit=crop&w=600&q=80" },
+    { id: 9, cat: "exterior", name: "Rosal Rojo", price: "$6.00", stock: "Disponible", img: "https://images.unsplash.com/photo-1496062031456-07b8f162a322?auto=format&fit=crop&w=600&q=80" },
+    { id: 10, cat: "exterior", name: "Buganvilla", price: "$7.50", stock: "Disponible", img: "https://images.unsplash.com/photo-1597848212624-a19eb35e2651?auto=format&fit=crop&w=600&q=80" },
+    { id: 11, cat: "exterior", name: "Ciprés Ornamental", price: "$15.00", stock: "Agotado temporalmente", img: "https://images.unsplash.com/photo-1520412099551-62b6bafeb5bb?auto=format&fit=crop&w=600&q=80" },
+    { id: 12, cat: "exterior", name: "Hierba Luisa (Medicinal)", price: "$3.00", stock: "Disponible", img: "https://images.unsplash.com/photo-1515586000433-45406d8e6662?auto=format&fit=crop&w=600&q=80" },
+    { id: 13, cat: "herramientas", name: "Abono Orgánico 5kg", price: "$4.50", stock: "Disponible", img: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=600&q=80" },
+    { id: 14, cat: "herramientas", name: "Tijera de Podar", price: "$9.00", stock: "Disponible", img: "https://images.unsplash.com/photo-1585513553738-84f4a6cb99c0?auto=format&fit=crop&w=600&q=80" },
+    { id: 15, cat: "herramientas", name: "Pala de Jardinería", price: "$6.00", stock: "Disponible", img: "https://images.unsplash.com/photo-1466781783364-36c955e42a7f?auto=format&fit=crop&w=600&q=80" },
+    { id: 16, cat: "herramientas", name: "Sustrato Universal 10kg", price: "$5.50", stock: "Disponible", img: "https://images.unsplash.com/photo-1591857177580-dc82b9ac4e1e?auto=format&fit=crop&w=600&q=80" },
+  ];
+
+  const catLabels = {
+    frutales: "Árboles Frutales",
+    interior: "Plantas de Interior",
+    exterior: "Plantas de Exterior",
+    herramientas: "Herramientas/Abonos"
+  };
+
+  function buildWhatsAppLink(productName) {
+    const text = `Hola Vivero El Frutícola El Huerto, me encuentro en Riobamba y estoy interesado en adquirir la planta: ${productName}. ¿Me podrían dar más información?`;
+    return WHATSAPP_BASE + encodeURIComponent(text);
+  }
+
+  function stockClasses(stock) {
+    if (stock === "Disponible") return "bg-emerald-50 text-emerald-700";
+    if (stock === "Pocas unidades") return "bg-amber-50 text-amber-700";
+    return "bg-red-50 text-red-600";
+  }
+
+  function renderProducts() {
+    const grid = document.getElementById("productGrid");
+    grid.innerHTML = products.map(p => `
+      <article class="fade-item fade-show bg-white rounded-xl2 overflow-hidden hover-lift flex flex-col" data-cat="${p.cat}">
+        <div class="h-56 overflow-hidden">
+          <img src="${p.img}" alt="${p.name}" class="w-full h-full object-cover" loading="lazy">
+        </div>
+        <div class="p-6 flex flex-col flex-1">
+          <span class="text-[11px] uppercase tracking-widest text-forest/70 font-semibold">${catLabels[p.cat]}</span>
+          <h3 class="font-display text-xl text-bark mt-2">${p.name}</h3>
+          <div class="flex items-center justify-between mt-4">
+            <span class="font-semibold text-forest text-lg">${p.price}</span>
+            <span class="text-[11px] px-3 py-1 rounded-full font-semibold ${stockClasses(p.stock)}">${p.stock}</span>
+          </div>
+          <button class="whatsapp-order mt-6 inline-flex justify-center items-center gap-2 bg-forest text-cream text-sm font-semibold px-5 py-3 rounded-full hover-lift" data-name="${p.name}" aria-label="Pedir ${p.name} por WhatsApp">
+            Pedir por WhatsApp
+          </button>
+        </div>
+      </article>
+    `).join("");
+
+    grid.querySelectorAll(".whatsapp-order").forEach(btn => {
+      btn.addEventListener("click", () => {
+        window.open(buildWhatsAppLink(btn.dataset.name), "_blank", "noopener");
+      });
+    });
+  }
+
+  function initFilters() {
+    const buttons = document.querySelectorAll(".filter-btn");
+    buttons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        buttons.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        const filter = btn.dataset.filter;
+        const cards = document.querySelectorAll("#productGrid > article");
+        cards.forEach(card => {
+          const match = filter === "todas" || card.dataset.cat === filter;
+          if (match) {
+            card.style.display = "";
+            requestAnimationFrame(() => {
+              card.classList.remove("fade-hide");
+              card.classList.add("fade-show");
+            });
+          } else {
+            card.classList.remove("fade-show");
+            card.classList.add("fade-hide");
+            setTimeout(() => { card.style.display = "none"; }, 300);
+          }
+        });
+      });
+    });
+  }
+
+  function initMobileMenu() {
+    const menuBtn = document.getElementById("menuBtn");
+    const mobileMenu = document.getElementById("mobileMenu");
+    const iconOpen = document.getElementById("iconOpen");
+    const iconClose = document.getElementById("iconClose");
+
+    function closeMenu() {
+      mobileMenu.classList.add("hidden");
+      iconOpen.classList.remove("hidden");
+      iconClose.classList.add("hidden");
+      menuBtn.setAttribute("aria-expanded", "false");
+    }
+
+    menuBtn.addEventListener("click", () => {
+      const isHidden = mobileMenu.classList.contains("hidden");
+      mobileMenu.classList.toggle("hidden");
+      iconOpen.classList.toggle("hidden");
+      iconClose.classList.toggle("hidden");
+      menuBtn.setAttribute("aria-expanded", isHidden ? "true" : "false");
+    });
+
+    document.querySelectorAll(".mobile-link").forEach(link => {
+      link.addEventListener("click", closeMenu);
+    });
+  }
+
+  function initNavbarScroll() {
+    const navbar = document.getElementById("navbar");
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 40) {
+        navbar.classList.add("shadow-md");
+      } else {
+        navbar.classList.remove("shadow-md");
+      }
+    });
+  }
+
+  function initActiveSection() {
+    const sections = document.querySelectorAll("main section[id], header[id] ~ section[id]");
+    const allSections = document.querySelectorAll("section[id]");
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute("id");
+          navLinks.forEach(link => {
+            link.classList.toggle("active", link.dataset.section === id);
+          });
+        }
+      });
+    }, { rootMargin: "-45% 0px -45% 0px", threshold: 0 });
+
+    allSections.forEach(sec => observer.observe(sec));
+  }
+
+  function initGallerySwiper() {
+    new Swiper(".gallerySwiper", {
+      slidesPerView: 1.15,
+      spaceBetween: 20,
+      loop: true,
+      pagination: { el: ".swiper-pagination", clickable: true },
+      navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+      breakpoints: {
+        640: { slidesPerView: 1.6 },
+        1024: { slidesPerView: 2.4 },
+        1280: { slidesPerView: 3 }
+      }
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    renderProducts();
+    initFilters();
+    initMobileMenu();
+    initNavbarScroll();
+    initActiveSection();
+    initGallerySwiper();
+  });
+})();
+</script>
+</body>
+</html>
