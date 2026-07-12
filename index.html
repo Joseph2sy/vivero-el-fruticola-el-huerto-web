@@ -663,5 +663,90 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 </script>
+  <script>
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('testimonialForm');
+  const list = document.getElementById('testimonialsList');
+  const confirmation = document.getElementById('testimonialConfirmation');
+  const storageKey = 'elHuertoTestimonials';
+
+  if (!form || !list) return;
+
+  function createTestimonialCard(testimonial) {
+    const card = document.createElement('article');
+    card.className = 'bg-cream/10 backdrop-blur rounded-xl2 p-8 hover-lift';
+
+    const stars = document.createElement('p');
+    stars.className = 'stars text-[#99f6e4] text-lg';
+    stars.textContent =
+      '★'.repeat(testimonial.rating) +
+      '☆'.repeat(5 - testimonial.rating);
+
+    const comment = document.createElement('p');
+    comment.className = 'text-cream/90 text-sm mt-4 leading-relaxed';
+    comment.textContent = `“${testimonial.comment}”`;
+
+    const name = document.createElement('p');
+    name.className = 'font-semibold text-sm mt-5';
+    name.textContent = testimonial.name;
+
+    const city = document.createElement('p');
+    city.className = 'text-cream/60 text-xs';
+    city.textContent = testimonial.city;
+
+    card.append(stars, comment, name, city);
+    return card;
+  }
+
+  function loadTestimonials() {
+    try {
+      const saved = JSON.parse(localStorage.getItem(storageKey) || '[]');
+      saved.forEach(item => list.appendChild(createTestimonialCard(item)));
+    } catch (error) {
+      console.error('No se pudieron cargar los testimonios:', error);
+    }
+  }
+
+  form.addEventListener('submit', event => {
+    event.preventDefault();
+
+    const testimonial = {
+      name: document.getElementById('testimonialName').value.trim(),
+      city: document.getElementById('testimonialCity').value.trim(),
+      comment: document.getElementById('testimonialComment').value.trim(),
+      rating: Number(
+        document.querySelector('input[name="rating"]:checked')?.value
+      )
+    };
+
+    if (!testimonial.name || !testimonial.city ||
+        !testimonial.comment || !testimonial.rating) {
+      alert('Completa todos los campos y selecciona una calificación.');
+      return;
+    }
+
+    try {
+      const saved = JSON.parse(localStorage.getItem(storageKey) || '[]');
+      saved.push(testimonial);
+      localStorage.setItem(storageKey, JSON.stringify(saved));
+
+      list.appendChild(createTestimonialCard(testimonial));
+      form.reset();
+
+      confirmation.textContent =
+        '¡Gracias! Tu testimonio fue guardado correctamente.';
+      confirmation.classList.remove('hidden');
+
+      setTimeout(() => confirmation.classList.add('hidden'), 5000);
+    } catch (error) {
+      console.error(error);
+      alert('No se pudo guardar el testimonio en este navegador.');
+    }
+  });
+
+  loadTestimonials();
+});
+</script>
 </body>
+  
 </html>
