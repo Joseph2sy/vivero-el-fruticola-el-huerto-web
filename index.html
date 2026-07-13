@@ -581,19 +581,42 @@
   }
 
   function initGallerySwiper() {
-    new Swiper(".gallerySwiper", {
-      slidesPerView: 1.15,
-      spaceBetween: 20,
-      loop: true,
-      pagination: { el: ".swiper-pagination", clickable: true },
-      navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
-      breakpoints: {
-        640: { slidesPerView: 1.6 },
-        1024: { slidesPerView: 2.4 },
-        1280: { slidesPerView: 3 }
-      }
+  new Swiper(".gallerySwiper", {
+    slidesPerView: 1.15,
+    spaceBetween: 20,
+    loop: true,
+    pagination: { el: ".swiper-pagination", clickable: true },
+    navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+    breakpoints: {
+      640: { slidesPerView: 1.6 },
+      1024: { slidesPerView: 2.4 },
+      1280: { slidesPerView: 3 }
+    }
+  });
+
+  // ============================================================
+  // EFECTO PARALLAX: Expansión ultra suave al hacer scroll
+  // ============================================================
+  if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.utils.toArray('.gallerySwiper .swiper-slide img').forEach((img) => {
+      gsap.fromTo(img, 
+        { scale: 1.0 }, 
+        {
+          scale: 1.15, // Zoom sutil hacia adentro
+          ease: "none",
+          scrollTrigger: {
+            trigger: img,
+            start: "top bottom", // Empieza cuando entra por abajo de la pantalla
+            end: "bottom top",   // Termina al salir por arriba
+            scrub: 1.5           // Amortiguación de 1.5s para máxima suavidad
+          }
+        }
+      );
     });
   }
+}
 
   document.addEventListener("DOMContentLoaded", () => {
     renderProducts();
@@ -892,6 +915,9 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 </script>
+  <!-- Librerías de Animación GSAP y ScrollTrigger -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </body>
   
 </html>
